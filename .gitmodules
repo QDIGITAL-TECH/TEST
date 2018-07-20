@@ -1,0 +1,4 @@
+[submodule "QDIGITAL-TECH/TEMP"]
+	path = QDIGITAL-TECH/TEMP
+	url = git@github.com:QDIGITAL-TECH/TEMP.git
+	branch = stage

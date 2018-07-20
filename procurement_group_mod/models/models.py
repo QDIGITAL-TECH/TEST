@@ -24,10 +24,10 @@ class ProcurementGroupMod(models.Model):
     _inherit = 'procurement.group'
 
     @api.model
-    def _run_scheduler_tasks(self, use_new_cursor = False, company_id = False):
-        _days = 21
-        today = datetime.combine(datetime.now(), datetime.time(00, 00, 00))
-        fullfilment_range = (today + datetime.timedelta(days = _days)).strftime('%Y-%m-%d')
+    def _run_scheduler_tasks(self, fullfilment_range, use_new_cursor = False, company_id = False):
+        #_days = 21
+        #today = datetime.combine(datetime.now(), datetime.datetime.time(00, 00, 00))
+        #fullfilment_range = (today + datetime.timedelta(days = _days)).strftime('%Y-%m-%d')
 
         # Minimum stock rules
         self.sudo()._procure_orderpoint_confirm(use_new_cursor=use_new_cursor, company_id=company_id)

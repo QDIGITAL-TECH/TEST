@@ -61,7 +61,7 @@ class ProcurementGroupMod(models.Model):
         # Merge duplicated quants
         self.env['stock.quant']._merge_quants()
 
-    @api.modelmodel
+    @api.model
     def run_scheduler(self, fullfilment_range, use_new_cursor=False, company_id=False):
         """ Call the scheduler in order to check the running procurements (super method), to check the minimum stock rules
         and the availability of moves. This function is intended to be run for all the companies at the same time, so

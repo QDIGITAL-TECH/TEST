@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Open Academy",
+    'name': "procurement.group.mod",
 
-    'summary': """Manage trainings""",
+    'summary': """
+        Short (1 phrase/line) summary of the module's purpose, used as
+        subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Open Academy module for managing trainings:
-            - training sessions
-            - attendees registration
+        Long description of module's purpose
     """,
 
     'author': "My Company",
@@ -25,11 +25,11 @@
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
+        'views/views.xml',
         'views/templates.xml',
-        'views/openacademy.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
-        #'demo.xml',
+        'demo/demo.xml',
     ],
 }

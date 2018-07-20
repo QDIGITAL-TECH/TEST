@@ -2,3 +2,8 @@
 	path = QDIGITAL-TECH/TEMP
 	url = git@github.com:QDIGITAL-TECH/TEMP.git
 	branch = stage
+
+[submodule "QDIGITAL-TECH/TEST"]
+	path = QDIGITAL-TECH/TEST
+	url = git@github.com:QDIGITAL-TECH/TEST.git
+	branch = Staging-Build

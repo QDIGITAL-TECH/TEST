@@ -26,7 +26,7 @@ class ProcurementGroupMod(models.Model):
     @api.model
     def _run_scheduler_tasks(self, use_new_cursor = False, company_id = False):
         _days = 21
-        today = datetime.datetime.combine(datetime.datetime.now(), datetime.time(00, 00, 00))
+        today = datetime.combine(datetime.now(), datetime.time(00, 00, 00))
         fullfilment_range = (today + datetime.timedelta(days = _days)).strftime('%Y-%m-%d')
 
         # Minimum stock rules

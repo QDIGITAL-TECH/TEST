@@ -40,7 +40,7 @@ class ProcurementGroupMod(models.Model):
         # Search all confirmed stock_moves and try to assign them
         #confirmed_moves = self.env['stock.move'].search([('state', '=', 'confirmed')], limit=None, order='priority desc, date_expected asc')
         ###### MODIFIED CONFIRMED MOVES.
-        confirmed_moves = model.env['stock.move'].search(['&',('state', '=', 'confirmed'),('date', '<', fullfilment_range)], limit=None, order='priority desc, date_expected asc')
+        confirmed_moves = self.env['stock.move'].search(['&',('state', '=', 'confirmed'),('date', '<', fullfilment_range)], limit=None, order='priority desc, date_expected asc')
         for moves_chunk in split_every(100, confirmed_moves.ids):
             self.env['stock.move'].browse(moves_chunk)._action_assign()
             if use_new_cursor:

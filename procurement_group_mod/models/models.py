@@ -61,7 +61,7 @@ class ProcurementGroupMod(models.Model):
         # Merge duplicated quants
         self.env['stock.quant']._merge_quants()
 
-    @api.model
+    @api.modelmodel
     def run_scheduler(self, fullfilment_range, use_new_cursor=False, company_id=False):
         """ Call the scheduler in order to check the running procurements (super method), to check the minimum stock rules
         and the availability of moves. This function is intended to be run for all the companies at the same time, so
@@ -72,7 +72,7 @@ class ProcurementGroupMod(models.Model):
                 self = self.with_env(self.env(cr=cr))  # TDE FIXME
 
             #self._run_scheduler_tasks(fullfilment_range, use_new_cursor=use_new_cursor, company_id=company_id)
-            self._run_scheduler_tasks(True, fullfilment_range)
+            self._run_scheduler_tasks(self, fullfilment_range)
         finally:
             if use_new_cursor:
                 try:

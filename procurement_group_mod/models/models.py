@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 from collections import defaultdict
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 from odoo.tools.misc import split_every
 from psycopg2 import OperationalError
@@ -25,9 +25,10 @@ class ProcurementGroupMod(models.Model):
 
     @api.model
     def _run_scheduler_tasks(self, fullfilment_range, use_new_cursor = False, company_id = False):
-        #_days = 21
-        #today = datetime.combine(datetime.now(), datetime.datetime.time(00, 00, 00))
-        #fullfilment_range = (today + datetime.timedelta(days = _days)).strftime('%Y-%m-%d')
+        _days = 21
+        #today = datetime.datetime.combine(datetime.datetime.now(), datetime.time(00, 00, 00))
+        today = datetime.now()
+        fullfilment_range = (today + timedelta(days = 21)).strftime('%Y-%m-%d')
 
         # Minimum stock rules
         self.sudo()._procure_orderpoint_confirm(use_new_cursor=use_new_cursor, company_id=company_id)

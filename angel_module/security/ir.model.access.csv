@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_angel_module_angel_module,angel_module.angel_module,model_angel_module_angel_module,,1,0,0,0

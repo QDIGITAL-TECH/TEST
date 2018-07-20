@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="teacher_list_action">
+            <field name="name">Teachers</field>
+            <field name="res_model">academy.teacher</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first Teacher
+                </p>
+            </field>
+        </record>
+
+        <!-- top level menu: no parent -->
+        <menuitem id="main_academy_menu" name="Academy"/>
+        <!-- A first level in the left side menu is needed
+             before using action= attribute -->
+        <menuitem id="academy_menu" name="Academy"
+                  parent="main_academy_menu"/>
+        <!-- the following menuitem should appear *after*
+             its parent academy_menu and *after* its
+             action course_list_action -->
+        <menuitem id="teachers_menu" name="Teachers" parent="academy_menu"
+                  action="teacher_list_action"/>
+        <!-- Full id location:
+             action="academy.course_list_action"
+             It is not required when it is the same module -->
+</odoo>

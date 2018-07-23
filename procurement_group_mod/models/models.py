@@ -30,7 +30,7 @@ class ProcurementGroupMod(models.Model):
     @api.model
     def _run_scheduler_tasks(self, _days, use_new_cursor = False, company_id = False):
         #_days = 21
-        today = datetime.datetime.combine(datetime.datetime.now(), datetime.time(00, 00, 00))
+        #today = datetime.datetime.combine(datetime.datetime.now(), datetime.time(00, 00, 00))
         today = datetime.now()
         fullfilment_range = (today + timedelta(days = 21)).strftime('%Y-%m-%d')
 

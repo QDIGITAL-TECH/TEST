@@ -28,7 +28,7 @@ class ProcurementGroupMod(models.Model):
 
 
     @api.model
-    def _run_scheduler_tasks(self, fullfilment_range, use_new_cursor = False, company_id = False):
+    def _run_scheduler_tasks(self, _days, use_new_cursor = False, company_id = False):
         #_days = 21
         #today = datetime.datetime.combine(datetime.datetime.now(), datetime.time(00, 00, 00))
         #today = datetime.now()
@@ -62,19 +62,19 @@ class ProcurementGroupMod(models.Model):
         self.env['stock.quant']._merge_quants()
 
     @api.model
-    def run_scheduler(self, fullfilment_range, use_new_cursor=False, company_id=False):
+    def run_scheduler(self, _days, use_new_cursor=False, company_id=False):
         """ Call the scheduler in order to check the running procurements (super method), to check the minimum stock rules
         and the availability of moves. This function is intended to be run for all the companies at the same time, so
         we run functions as SUPERUSER to avoid intercompanies and access rights issues. """
 
-        #raise Warning(fullfilment_range)
+        #raise Warning(_days)
         try:
             if use_new_cursor:
                 cr = registry(self._cr.dbname).cursor()
                 self = self.with_env(self.env(cr=cr))  # TDE FIXME
 
-            #self._run_scheduler_tasks(fullfilment_range, use_new_cursor=use_new_cursor, company_id=company_id)
-            self._run_scheduler_tasks(fullfilment_range)
+            #self._run_scheduler_tasks(_days, use_new_cursor=use_new_cursor, company_id=company_id)
+            self._run_scheduler_tasks(_days)
         finally:
             if use_new_cursor:
                 try:

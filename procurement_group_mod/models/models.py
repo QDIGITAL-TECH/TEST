@@ -142,7 +142,7 @@ class ProcurementGroupMod(models.Model):
         #_days = 21
         #today = datetime.datetime.combine(datetime.datetime.now(), datetime.time(00, 00, 00))
         today = datetime.now()
-        fullfilment_range = (today + timedelta(days = 21)).strftime('%Y-%m-%d')
+        fullfilment_range = (today + timedelta(days = _days)).strftime('%Y-%m-%d')
 
         # Minimum stock rules
         self.sudo()._procure_orderpoint_confirm(use_new_cursor=use_new_cursor, company_id=company_id)

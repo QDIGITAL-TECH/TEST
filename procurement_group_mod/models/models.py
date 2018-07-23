@@ -178,7 +178,7 @@ class ProcurementGroupMod(models.Model):
         we run functions as SUPERUSER to avoid intercompanies and access rights issues. """
         
         #raise Warning((str)(use_new_cursor) + ' - ' + (str)(company_id))
-        raise Warning (self._procurement_from_orderpoint_get_order())
+        #raise Warning (self._procurement_from_orderpoint_get_order())
         try:
             if use_new_cursor:
                 cr = registry(self._cr.dbname).cursor()

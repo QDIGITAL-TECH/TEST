@@ -21,7 +21,6 @@ class ProcurementGroupMod(models.Model):
     _name = 'procurement_mod'
     _description = 'Procurement Requisition Modified'
     _order = "id desc"
-    _inherit = 'procurement.group'
 
     """
     The procurement group class is used to group products together

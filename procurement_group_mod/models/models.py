@@ -67,7 +67,8 @@ class ProcurementGroupMod(models.Model):
         and the availability of moves. This function is intended to be run for all the companies at the same time, so
         we run functions as SUPERUSER to avoid intercompanies and access rights issues. """
         
-        raise Warning((str)(use_new_cursor) + ' - ' + (str)(company_id))
+        #raise Warning((str)(use_new_cursor) + ' - ' + (str)(company_id))
+        raise Warning (_procurement_from_orderpoint_get_order())
         try:
             if use_new_cursor:
                 cr = registry(self._cr.dbname).cursor()

@@ -73,8 +73,8 @@ class ProcurementGroupMod(models.Model):
                 cr = registry(self._cr.dbname).cursor()
                 self = self.with_env(self.env(cr=cr))  # TDE FIXME
 
-            #self._run_scheduler_tasks(_days, use_new_cursor=use_new_cursor, company_id=company_id)
-            self._run_scheduler_tasks(_days)
+            self._run_scheduler_tasks(_days, use_new_cursor=use_new_cursor, company_id=company_id)
+            #self._run_scheduler_tasks(_days)
         finally:
             if use_new_cursor:
                 try:

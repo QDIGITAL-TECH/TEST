@@ -114,7 +114,7 @@ class ProcurementGroupMod(models.Model):
     def _get_exceptions_domain(self):
         return [('procure_method', '=', 'make_to_order'), ('move_orig_ids', '=', False)]
 
-     @api.model
+    @api.model
     def _procurement_from_orderpoint_get_order(self):
         return 'location_id'
 

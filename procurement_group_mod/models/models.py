@@ -62,12 +62,12 @@ class ProcurementGroupMod(models.Model):
         self.env['stock.quant']._merge_quants()
 
     @api.model
-    def run_scheduler(self, _days, use_new_cursor=False, company_id=False, test = False, test2 = True):
+    def run_scheduler(self, _days, use_new_cursor=False, company_id=False):
         """ Call the scheduler in order to check the running procurements (super method), to check the minimum stock rules
         and the availability of moves. This function is intended to be run for all the companies at the same time, so
         we run functions as SUPERUSER to avoid intercompanies and access rights issues. """
-
-        #raise Warning(_days)
+        
+        raise Warning((str)(use_new_cursor) + ' - ' + (str)(company_id))
         try:
             if use_new_cursor:
                 cr = registry(self._cr.dbname).cursor()

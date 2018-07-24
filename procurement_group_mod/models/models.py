@@ -38,6 +38,7 @@ class ProcurementGroupMod(models.Model):
         #confirmed_moves = self.env['stock.move'].search([('state', '=', 'confirmed')], limit=None, order='priority desc, date_expected asc')
         ###### MODIFIED CONFIRMED MOVES.
         confirmed_moves = self.env['stock.move'].search(['&',('state', '=', 'confirmed'),('date', '<', fullfilment_range)], limit=None, order='priority desc, date_expected asc')
+        raise Warning(len(confirmed_moves))
         for moves_chunk in split_every(100, confirmed_moves.ids):
             self.env['stock.move'].browse(moves_chunk)._action_assign()
             if use_new_cursor:
@@ -71,8 +72,9 @@ class ProcurementGroupMod(models.Model):
             if use_new_cursor:
                 cr = registry(self._cr.dbname).cursor()
                 self = self.with_env(self.env(cr=cr))  # TDE FIXME
-            raise Warning('IT GOT HERE!')
+            
             self._run_scheduler_tasks(_days, use_new_cursor=use_new_cursor, company_id=company_id)
+            raise Warning('IT GOT HERE!')
             #self._run_scheduler_tasks(_days)
         finally:
             if use_new_cursor:

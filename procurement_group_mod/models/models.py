@@ -82,7 +82,7 @@ class ProcurementGroupMod(models.Model):
                     self._cr.close()
                 except Exception:
                     pass
-        raise Warning('IT GOT HERE!')
+        #raise Warning('IT GOT HERE!')
         return {}
 
     

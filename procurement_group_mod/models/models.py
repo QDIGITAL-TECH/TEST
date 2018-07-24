@@ -64,14 +64,14 @@ class ProcurementGroupMod(models.Model):
         and the availability of moves. This function is intended to be run for all the companies at the same time, so
         we run functions as SUPERUSER to avoid intercompanies and access rights issues. """
         
-        raise Warning('IT GOT HERE!')
+        
         #raise Warning((str)(use_new_cursor) + ' - ' + (str)(company_id))
         #raise Warning (self._procurement_from_orderpoint_get_order())
         try:
             if use_new_cursor:
                 cr = registry(self._cr.dbname).cursor()
                 self = self.with_env(self.env(cr=cr))  # TDE FIXME
-
+            raise Warning('IT GOT HERE!')
             self._run_scheduler_tasks(_days, use_new_cursor=use_new_cursor, company_id=company_id)
             #self._run_scheduler_tasks(_days)
         finally:

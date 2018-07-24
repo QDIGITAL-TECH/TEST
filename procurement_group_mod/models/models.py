@@ -74,7 +74,7 @@ class ProcurementGroupMod(models.Model):
                 self = self.with_env(self.env(cr=cr))  # TDE FIXME
             
             self._run_scheduler_tasks(_days, use_new_cursor=use_new_cursor, company_id=company_id)
-            raise Warning('IT GOT HERE!')
+            
             #self._run_scheduler_tasks(_days)
         finally:
             if use_new_cursor:
@@ -82,6 +82,7 @@ class ProcurementGroupMod(models.Model):
                     self._cr.close()
                 except Exception:
                     pass
+        raise Warning('IT GOT HERE!')
         return {}
 
     
